@@ -10,14 +10,14 @@ script:
   - docker run -e CI=true gleison/react-test npm test
 
 after_success:
-  - docker build -t gleison/multi-client ./client
-  - docker build -t gleison/multi-nginx ./nginx
-  - docker build -t gleison/multi-server ./server
-  - docker build -t gleison/multi-worker ./worker
+  - docker build -t gleisonbs/multi-client ./client
+  - docker build -t gleisonbs/multi-nginx ./nginx
+  - docker build -t gleisonbs/multi-server ./server
+  - docker build -t gleisonbs/multi-worker ./worker
 
   - echo $DOCKER_PASSWORD | docker login docker.io -u $DOCKER_USERNAME --password-stdin
 
-  - docker push gleison/multi-client
-  - docker push gleison/multi-nginx
-  - docker push gleison/multi-server
-  - docker push gleison/multi-worker
+  - docker push gleisonbs/multi-client
+  - docker push gleisonbs/multi-nginx
+  - docker push gleisonbs/multi-server
+  - docker push gleisonbs/multi-worker
